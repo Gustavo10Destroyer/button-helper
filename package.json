@@ -1,0 +1,31 @@
+{
+  "name": "@destroyer/button-helper",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Gustavo10Destroyer",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "npx tsc",
+    "install": "npm run build"
+  },
+  "devDependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc13"
+  },
+  "dependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@whiskeysockets/baileys": "^7.0.0-rc13"
+  },
+  "allowScripts": {
+    "protobufjs@7.6.4": true,
+    "@whiskeysockets/baileys@7.0.0-rc13": true
+  }
+}
