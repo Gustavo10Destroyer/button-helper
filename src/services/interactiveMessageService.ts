@@ -81,27 +81,29 @@ export async function sendInteractiveMessage(
     warnIfNeeded('Interactive content warnings:', contentValidation.warnings);
 
     const userJid = resolveUserJid(sock);
-    const fullMessage = generateWAMessageFromContent(
-        jid,
-        convertedContent,
-        {
-            userJid,
-            messageId: generateMessageIDV2(userJid),
-            timestamp: new Date(),
-            ...toGenerationOptions(options),
-        },
-    );
+    const fullMessage = generateWAMessageFromContent(jid, convertedContent, {
+        userJid,
+        messageId: generateMessageIDV2(userJid),
+        timestamp: new Date(),
+        ...toGenerationOptions(options),
+    });
 
     if (!fullMessage.message) {
-        throw new InteractiveValidationError('Generated WhatsApp message is empty', {
-            context: 'sendInteractiveMessage.generateWAMessageFromContent',
-        });
+        throw new InteractiveValidationError(
+            'Generated WhatsApp message is empty',
+            {
+                context: 'sendInteractiveMessage.generateWAMessageFromContent',
+            },
+        );
     }
 
     if (!fullMessage.key.id) {
-        throw new InteractiveValidationError('Generated WhatsApp message is missing an id', {
-            context: 'sendInteractiveMessage.generateWAMessageFromContent',
-        });
+        throw new InteractiveValidationError(
+            'Generated WhatsApp message is missing an id',
+            {
+                context: 'sendInteractiveMessage.generateWAMessageFromContent',
+            },
+        );
     }
 
     const normalizedContent = normalizeMessageContent(fullMessage.message);
