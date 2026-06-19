@@ -318,12 +318,14 @@ function validateInteractiveAuthoringButton(
     index: number,
     errors: string[],
 ): void {
+    if (isQuickReplyButton(button)) return;
+
     if (!isRecord(button)) {
         errors.push(`interactiveButtons[${index}] must be an object`);
         return;
     }
 
-    const name = button.name;
+    const name = button;
     if (typeof name !== 'string' || !isInteractiveButtonName(name)) {
         errors.push(`interactiveButtons[${index}] missing or unsupported name`);
         return;
