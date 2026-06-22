@@ -325,9 +325,11 @@ function validateInteractiveAuthoringButton(
         return;
     }
 
-    const name = button;
+    const name = button.name;
     if (typeof name !== 'string' || !isInteractiveButtonName(name)) {
-        errors.push(`interactiveButtons[${index}] missing or unsupported name`);
+        errors.push(
+            `interactiveButtons[${index}] missing or unsupported name (name: ${name})`,
+        );
         return;
     }
 
